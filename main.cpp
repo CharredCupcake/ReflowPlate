@@ -88,8 +88,6 @@ void loop() {
   while (timeLeft > 0)
   {
     currentTime = millis();
-    Serial.print("     Current Time: ");
-    Serial.println(currentTime);
     if (T1.GetTempInC() >= MAX_REFLOW_TEMP - 15)
     {
       digitalWrite(RELAY_PIN, HIGH);
@@ -100,8 +98,6 @@ void loop() {
     }
     delay(500);
     passedTime = millis() - currentTime;
-    Serial.print("     Passed Time: ");
-    Serial.println(passedTime);
     if (timeLeft - passedTime < 0)
     {
       timeLeft = 0;
@@ -109,7 +105,7 @@ void loop() {
     }
     timeLeft = timeLeft - passedTime;
     Serial.println(T1.GetTempInC());
-    Serial.print("     ");
+    Serial.print("Time Left: ");
     Serial.println(timeLeft);
   }
   digitalWrite(GREEN_PIN, LOW);
